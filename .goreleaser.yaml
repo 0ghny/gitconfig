@@ -1,6 +1,10 @@
 project_name: gitconfigs
 builds:
-  - env: [CGO_ENABLED=0]
+  - id: gitconfigs
+    main: ./cmd
+    binary: gitconfigs
+    env:
+      - CGO_ENABLED=0
     goos:
       - linux
       - windows
