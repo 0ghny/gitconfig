@@ -7,7 +7,11 @@ import (
 )
 
 var (
-	version = "0.0.0"
+	version = "dev"
+	// https://goreleaser.com/cookbooks/using-main.version
+	// commit  = "none"
+	// date    = "unknown"
+	// builtBy = "unknown"
 )
 
 func main() {
