@@ -21,10 +21,9 @@ var (
 
 func locationCmd() *cobra.Command {
 	locationCmd := &cobra.Command{
-		Use:          "location",
-		Short:        "Manage a gitconfigs location",
-		Long:         `Manage a gitconfig location`,
-		SilenceUsage: true,
+		Use:   "location",
+		Short: "Manage a gitconfigs location",
+		Long:  `Manage a gitconfig location`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			locationMgr := locations.NewLocationManager("", nil)
 			location, err := locationMgr.FindLocationByKey(inputLocationKey)
@@ -53,11 +52,12 @@ func locationCmd() *cobra.Command {
 	// Configure
 	addLocationCmdFlags(locationCmd)
 	// Subcommands
-	locationCmd.AddCommand(locationsNewCmd())
+	locationCmd.AddCommand(locationNewCmd())
 	return locationCmd
 }
 
 func addLocationCmdFlags(cmd *cobra.Command) {
 	cmd.PersistentFlags().
 		StringVarP(&inputLocationKey, varLocationKey, varShortLocationKey, "", "Location key, it will be used to identify the location in further operations")
+	cmd.MarkPersistentFlagRequired(varLocationKey)
 }

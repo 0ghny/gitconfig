@@ -1,11 +1,14 @@
 package locations
 
 import (
+	"errors"
 	"io/fs"
+	"os"
 	"testing"
 
 	"github.com/0ghny/gitconfigs/internal/filesystem"
 	"github.com/0ghny/gitconfigs/pkg/gitconfig"
+	"github.com/spf13/afero"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -65,11 +68,15 @@ const (
 	path = ~/.gitconfigs/location2.gitconfig`
 )
 
+var (
+	aFS *afero.Afero
+)
+
 func newMockLocationManager(fileContent string) *LocationManager {
 	gitConfigPath := gitconfig.GetUserGitConfigPath()
-	AFS := filesystem.NewMemFs()
-	AFS.WriteFile(gitConfigPath, []byte(fileContent), fs.ModeAppend)
-	return NewLocationManager(gitConfigPath, AFS)
+	aFS = filesystem.NewMemFs()
+	aFS.WriteFile(gitConfigPath, []byte(fileContent), fs.ModeAppend)
+	return NewLocationManager(gitConfigPath, aFS)
 }
 
 func TestGetLocations_WithValidFile_ShouldReturnsLocations(t *testing.T) {
@@ -152,5 +159,11 @@ func TestSaveLocation_WithValidLocation_ShouldAddLocationToGitConfigAndCreateLoc
 	l, err := locationMgr.FindLocationByKey(key)
 	require.Nil(t, err)
 	require.NotNil(t, l)
-
+	// Check if location config file has been created
+	_, err = aFS.Stat(l.ConfigFile)
+	require.False(t, errors.Is(err, os.ErrNotExist))
+	// Check permissions on file, should be 0664
+	//currentFileMode := fileInfo.Mode()
+	//expectedFileMode := fs.FileMode(int(0664))
+	//require.True(t, currentFileMode == expectedFileMode)
 }

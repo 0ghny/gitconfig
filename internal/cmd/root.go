@@ -23,10 +23,11 @@ var (
 
 func RootCmd(version string) *cobra.Command {
 	rootCmd := &cobra.Command{
-		Use:     "gitconfigs",
-		Version: version,
-		Short:   "Manage git configurations with ease",
-		Long:    `Manage multiple location based git configurations easily`,
+		Use:          "gitconfigs",
+		Version:      version,
+		SilenceUsage: true,
+		Short:        "Manage git configurations with ease",
+		Long:         `Manage multiple location based git configurations easily`,
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 			_, err := home.EnsureHome()
 			if err != nil {
@@ -39,7 +40,7 @@ func RootCmd(version string) *cobra.Command {
 	addRootCmdFlags(rootCmd)
 
 	// Subcommands
-	rootCmd.AddCommand(locationsCmd(), locationCmd())
+	rootCmd.AddCommand(locationsCmd(), locationCmd(), configCmd())
 	return rootCmd
 }
 

@@ -17,8 +17,8 @@ var (
 	location string
 )
 
-func locationsNewCmd() *cobra.Command {
-	locationsNewCmd := &cobra.Command{
+func locationNewCmd() *cobra.Command {
+	locationNewCmd := &cobra.Command{
 		Use:   "new",
 		Short: "Create a new gitconfig for specified location",
 		Long:  `Creates a new gitconfig file for specified location`,
@@ -41,11 +41,11 @@ func locationsNewCmd() *cobra.Command {
 			return nil
 		},
 	}
-	addlocationsNewCmdFlags(locationsNewCmd)
-	return locationsNewCmd
+	addlocationNewCmdFlags(locationNewCmd)
+	return locationNewCmd
 }
 
-func addlocationsNewCmdFlags(cmd *cobra.Command) {
+func addlocationNewCmdFlags(cmd *cobra.Command) {
 	cmd.PersistentFlags().
 		StringVarP(&location, varLocation, varShortLocation, iox.Getwd(), "Location for new gitconfig, default to current directory")
 }

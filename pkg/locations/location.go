@@ -12,7 +12,7 @@ import (
 const (
 	locationSectionTemplate string = `
 # gitconfigs.location.key {{.Key}}
-[includeIf "gitdir:{{.Path}}"]
+[includeIf "gitdir:{{.Path}}/"]
 	path = {{.ConfigFile}}
 `
 )
