@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/0ghny/gitconfigs/internal/cmd"
+	"github.com/0ghny/gitconfig/internal/cmd"
 )
 
 var (

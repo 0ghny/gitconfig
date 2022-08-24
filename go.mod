@@ -1,4 +1,4 @@
-module github.com/0ghny/gitconfigs
+module github.com/0ghny/gitconfig
 
 go 1.19
 

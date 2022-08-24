@@ -6,8 +6,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/0ghny/gitconfigs/internal/filesystem"
-	"github.com/0ghny/gitconfigs/pkg/gitconfig"
+	"github.com/0ghny/gitconfig/internal/filesystem"
+	"github.com/0ghny/gitconfig/pkg/gitconfig"
 	"github.com/spf13/afero"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -55,15 +55,15 @@ const (
 # ..................................................................................
 # Specific folders settings
 # ..................................................................................
-# gitconfigs.location.key location
+# gitconfig.location.key location
 [includeIf "gitdir:~/tmp/location/"]
 	path = ~/.gitconfigs/location.gitconfig
 
-# gitconfigs.location.key location1
+# gitconfig.location.key location1
 [includeIf "gitdir:~/location1/"]
 	path = ~/.gitconfigs/location1.gitconfig
 
-# gitconfigs.location.key location2
+# gitconfig.location.key location2
 [includeIf "gitdir:/var/lib/locations2/"]
 	path = ~/.gitconfigs/location2.gitconfig`
 )
@@ -89,7 +89,7 @@ func TestGetLocations_WithValidFile_ShouldReturnsLocations(t *testing.T) {
 
 func TestGetLocations_WithNoLocationInFile_ShouldReturnsAnEmptyArrayOfLocations(t *testing.T) {
 	locationMgr := newMockLocationManager(`
-# gitconfigs.location.key location
+# gitconfig.location.key location
 [includeIf "gitdir:~/tmp/location/"]
 	path = ~/.gitconfigs/location.gitconfig
 
@@ -97,7 +97,7 @@ func TestGetLocations_WithNoLocationInFile_ShouldReturnsAnEmptyArrayOfLocations(
 [includeIf "gitdir:~/location1/"]
 	path = ~/.gitconfigs/location1.gitconfig
 
-# gitconfigs.location.key location2
+# gitconfig.location.key location2
 [includeIf "gitdir:/var/lib/locations2/"]
 	path = ~/.gitconfigs/location2.gitconfig
 `)
@@ -152,7 +152,7 @@ func TestSaveLocation_WithValidLocation_ShouldAddLocationToGitConfigAndCreateLoc
 	path := "/tmp/newlocation"
 	// Save new location, it should
 	//  1. Add section to gitconfig
-	//  2. Create file from template templates.go into configured gitconfigs home with key as name
+	//  2. Create file from template templates.go into configured gitconfig home with key as name
 	err := locationMgr.SaveLocation(key, path)
 	require.Nil(t, err)
 	// Get the just created location from file, to check it was created successfully

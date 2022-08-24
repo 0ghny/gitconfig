@@ -3,9 +3,9 @@ package git
 import (
 	"fmt"
 
-	"github.com/0ghny/gitconfigs/internal/commander"
-	"github.com/0ghny/gitconfigs/internal/commander/builder"
-	gcf "github.com/0ghny/gitconfigs/pkg/gitconfig"
+	"github.com/0ghny/gitconfig/internal/commander"
+	"github.com/0ghny/gitconfig/internal/commander/builder"
+	gcf "github.com/0ghny/gitconfig/pkg/gitconfig"
 )
 
 func GitConfigGet(key string, gitconfig string) (value string, err error) {

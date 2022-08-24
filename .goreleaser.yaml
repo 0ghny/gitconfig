@@ -1,8 +1,8 @@
-project_name: gitconfigs
+project_name: gitconfig
 builds:
-  - id: gitconfigs
+  - id: gitconfig
     main: ./cmd
-    binary: gitconfigs
+    binary: gitconfig
     env:
       - CGO_ENABLED=0
     goos:

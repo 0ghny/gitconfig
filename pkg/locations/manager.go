@@ -6,14 +6,14 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/0ghny/gitconfigs/internal/filesystem"
-	"github.com/0ghny/gitconfigs/internal/templates"
-	"github.com/0ghny/gitconfigs/pkg/gitconfig"
+	"github.com/0ghny/gitconfig/internal/filesystem"
+	"github.com/0ghny/gitconfig/internal/templates"
+	"github.com/0ghny/gitconfig/pkg/gitconfig"
 	"github.com/spf13/afero"
 )
 
 const (
-	regexStrGitConfigLocationGroups string      = `(?m)^#[\s]*gitconfigs.location.key[\s]*(?P<key>.*)[\s]*\[includeIf[\s]* \"gitdir:(?P<dir>.*)\"\][\s]*[\s]*path[\s]*=[\s]*(?P<path>.*)$`
+	regexStrGitConfigLocationGroups string      = `(?m)^#[\s]*gitconfig.location.key[\s]*(?P<key>.*)[\s]*\[includeIf[\s]* \"gitdir:(?P<dir>.*)\"\][\s]*[\s]*path[\s]*=[\s]*(?P<path>.*)$`
 	configFilePerms                 fs.FileMode = fs.FileMode(int(0644))
 )
 

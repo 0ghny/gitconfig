@@ -6,12 +6,12 @@ import (
 	"path/filepath"
 	"text/template"
 
-	"github.com/0ghny/gitconfigs/internal/home"
+	"github.com/0ghny/gitconfig/internal/home"
 )
 
 const (
 	locationSectionTemplate string = `
-# gitconfigs.location.key {{.Key}}
+# gitconfig.location.key {{.Key}}
 [includeIf "gitdir:{{.Path}}/"]
 	path = {{.ConfigFile}}
 `

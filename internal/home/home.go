@@ -3,7 +3,7 @@ package home
 import (
 	"os"
 
-	"github.com/0ghny/gitconfigs/internal/config"
+	"github.com/0ghny/gitconfig/internal/config"
 	"github.com/0ghny/go-libx/pkg/iox"
 	log "github.com/sirupsen/logrus"
 )

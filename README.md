@@ -1,9 +1,9 @@
-# gitconfigs
+# gitconfig
 
-> Cli to manage multiple gitconfigs with ease
+> Cli to manage multiple gitconfig with ease
 
 
-GitConfigs cli, helps with the tedious management of multiple gitconfigs when you need to have different configurations per location. It helps to manage the includeIf sections
+gitconfig cli, helps with the tedious management of multiple gitconfig when you need to have different configurations per location. It helps to manage the includeIf sections
 
 ```ini
 [includeIf "gitdir:/a/location/"]
@@ -19,12 +19,12 @@ Go to release page, download the binary of your platform / arch and start using 
 
 ### Install using asdf
 
-There's a plugin for asdf to make it easy to use gitconfigs.
+There's a plugin for asdf to make it easy to use gitconfig.
 
 ```shell
 # Having asdf installed and configured in your system
-asdf plugin add gitconfigs
-asdf install gitconfigs latest
+asdf plugin add gitconfig
+asdf install gitconfig latest
 asdf global gitconfig latest
 ```
 
@@ -34,20 +34,20 @@ asdf global gitconfig latest
 Manage multiple location based git configurations easily
 
 Usage:
-  gitconfigs [command]
+  gitconfig [command]
 
 Available Commands:
   completion  Generate the autocompletion script for the specified shell
   config      Executes git config [config-key] [config value] on an specified location
   help        Help about any command
-  location    Manage a gitconfigs location
+  location    Manage a gitconfig location
   locations   List configured locations
 
 Flags:
   -c, --git-config string   Git configuration file (default "/home/user/.gitconfig")
-  -h, --help                help for gitconfigs
+  -h, --help                help for gitconfig
   -v, --verbosity int       Verbosity level from 0 to 4
-      --version             version for gitconfigs
+      --version             version for gitconfig
 ```
 
 ### Retrieve current configured locations
@@ -56,7 +56,7 @@ Flags:
 # It prints all configured locations, in this example, theres only one location
 # with key "github" that i use to my github specific configurations like
 # changing user name and email.
-$ gitconfigs locations
+$ gitconfig locations
 
 +---+--------+--------------------------+------------------------------------------+
 | # | KEY    | LOCATION                 | GITCONFIG                                |
@@ -76,15 +76,15 @@ $ gitconfigs locations
 
 # Option 1:
 $ cd /code
-$ gitconfigs location new --key github
+$ gitconfig location new --key github
 
 # Options 2:
-$ gitconfigs location new --key github --location /code
+$ gitconfig location new --key github --location /code
 
 # If you check your ~/.gitconfig file, it should shown at the very end
 $ cat ~/.gitconfig
 # ...
-# gitconfigs.location.key github
+# gitconfig.location.key github
 [includeIf "gitdir:/code/"]
     path = /home/user/.gitconfigs/github.gitconfig
 # ...
@@ -101,18 +101,18 @@ Internally, it just wraps git config but setting environment variable `GIT_CONFI
 ```shell
 # Get the user.name property in our recently created location
 # It is getted from a template
-$ gitconfigs config --key github user.name
+$ gitconfig config --key github user.name
 anonymmous
 
 # Sets a different user name
-$ gitconfigs config --key github user.name 0ghny
+$ gitconfig config --key github user.name 0ghny
 # Get the new name
-$ gitconfigs config --key github user.name
+$ gitconfig config --key github user.name
 0ghny
 
-# Being in /code/repository directory, we can test the git config user.name with gitconfigs as
+# Being in /code/repository directory, we can test the git config user.name with gitconfig as
 $ cd /code/repository
-$ gitconfigs config user.name
+$ gitconfig config user.name
 0ghny
 # 0ghny will be used as your name when operate with git
 

@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/0ghny/gitconfigs/internal/home"
+	"github.com/0ghny/gitconfig/internal/home"
 	"github.com/spf13/cobra"
 )
 
@@ -23,7 +23,7 @@ var (
 
 func RootCmd(version string) *cobra.Command {
 	rootCmd := &cobra.Command{
-		Use:          "gitconfigs",
+		Use:          "gitconfig",
 		Version:      version,
 		SilenceUsage: true,
 		Short:        "Manage git configurations with ease",

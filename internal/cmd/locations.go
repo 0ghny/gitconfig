@@ -3,7 +3,7 @@ package cmd
 import (
 	"os"
 
-	"github.com/0ghny/gitconfigs/pkg/locations"
+	"github.com/0ghny/gitconfig/pkg/locations"
 	"github.com/jedib0t/go-pretty/v6/table"
 	"github.com/spf13/cobra"
 )

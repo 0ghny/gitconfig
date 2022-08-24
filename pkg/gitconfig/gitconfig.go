@@ -3,7 +3,7 @@ package gitconfig
 import (
 	"path/filepath"
 
-	"github.com/0ghny/gitconfigs/internal/home"
+	"github.com/0ghny/gitconfig/internal/home"
 	"github.com/0ghny/go-libx/pkg/iox"
 )
 

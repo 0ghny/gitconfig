@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/0ghny/gitconfigs/pkg/locations"
+	"github.com/0ghny/gitconfig/pkg/locations"
 	"github.com/0ghny/go-libx/pkg/iox"
 	"github.com/spf13/cobra"
 )

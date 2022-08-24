@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/0ghny/gitconfigs/internal/git"
-	"github.com/0ghny/gitconfigs/pkg/locations"
+	"github.com/0ghny/gitconfig/internal/git"
+	"github.com/0ghny/gitconfig/pkg/locations"
 	"github.com/spf13/cobra"
 )
 

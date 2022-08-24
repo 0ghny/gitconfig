@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/0ghny/gitconfigs/pkg/locations"
+	"github.com/0ghny/gitconfig/pkg/locations"
 	"github.com/jedib0t/go-pretty/v6/table"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -22,7 +22,7 @@ var (
 func locationCmd() *cobra.Command {
 	locationCmd := &cobra.Command{
 		Use:   "location",
-		Short: "Manage a gitconfigs location",
+		Short: "Manage a gitconfig location",
 		Long:  `Manage a gitconfig location`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			locationMgr := locations.NewLocationManager("", nil)
