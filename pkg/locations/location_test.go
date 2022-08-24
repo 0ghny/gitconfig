@@ -9,7 +9,7 @@ import (
 func TestToSection_ShouldReturnsValidSectionFromLocationObject(t *testing.T) {
 	expectedSection := `
 # gitconfig.location.key aKey
-[includeIf "gitdir:/a/path"]
+[includeIf "gitdir:/a/path/"]
 	path = /configs/aKey.gitconfig
 `
 
