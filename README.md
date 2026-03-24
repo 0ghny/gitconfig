@@ -2,7 +2,6 @@
 
 > Cli to manage multiple gitconfig with ease
 
-
 gitconfig cli, helps with the tedious management of multiple gitconfig when you need to have different configurations per location. It helps to manage the includeIf sections
 
 ```ini
@@ -11,6 +10,14 @@ gitconfig cli, helps with the tedious management of multiple gitconfig when you 
 ```
 
 It also offers a git config wrapper command so you can get or set configuration properties directly to specific location configurations.
+
+## Documentation
+
+| Document | Description |
+|---|---|
+| [Architecture](docs/ARCHITECTURE.md) | Hexagonal structure, layers, data flow and key design decisions |
+| [Developer Guide](docs/DEVELOPER.md) | How to build, test, and contribute |
+| [Release Process](docs/RELEASE.md) | How to tag and publish a new release |
 
 
 ## Install
@@ -76,10 +83,10 @@ $ gitconfig locations
 
 # Option 1:
 $ cd /code
-$ gitconfig location new --key github
+$ gitconfig location new github
 
-# Options 2:
-$ gitconfig location new --key github --location /code
+# Option 2:
+$ gitconfig location new github --location /code
 
 # If you check your ~/.gitconfig file, it should shown at the very end
 $ cat ~/.gitconfig
@@ -88,6 +95,18 @@ $ cat ~/.gitconfig
 [includeIf "gitdir:/code/"]
     path = /home/user/.gitconfigs/github.gitconfig
 # ...
+```
+
+### Delete an existing location config
+
+```shell
+# Deletes the location with key "github", removing its section from ~/.gitconfig
+# and its associated config file.
+
+$ gitconfig location delete github
+Are you sure you want to delete location 'github'? [Y/n]:
+# Press Enter (or type y / yes) to confirm, anything else cancels
+Location 'github' deleted successfully.
 ```
 
 ### Get or Set a configuration property on a location

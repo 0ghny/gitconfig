@@ -1,9 +1,11 @@
+// Command gitconfig manages multiple gitconfig files for different repository
+// locations using includeIf directives.
 package main
 
 import (
 	"os"
 
-	"github.com/0ghny/gitconfig/internal/cmd"
+	"github.com/0ghny/gitconfig/internal/adapter/cli"
 )
 
 var (
@@ -15,7 +17,7 @@ var (
 )
 
 func main() {
-	root := cmd.RootCmd(version)
+	root := cli.RootCmd(version)
 	if err := root.Execute(); err != nil {
 		//log.Fatal(err)
 		//fmt.Println(err)

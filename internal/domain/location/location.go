@@ -1,0 +1,58 @@
+package location
+
+import (
+	"bytes"
+	"fmt"
+	"path/filepath"
+	"text/template"
+
+	"github.com/0ghny/gitconfig/internal/home"
+)
+
+const (
+	locationSectionTemplate string = `
+# gitconfig.location.key {{.Key}}
+[includeIf "gitdir:{{.Path}}/"]
+	path = {{.ConfigFile}}
+`
+)
+
+// Location represents a single gitconfig includeIf entry: a repository path
+// pattern associated with a dedicated gitconfig file and a short lookup key.
+type Location struct {
+	Key        string
+	Path       string
+	ConfigFile string
+}
+
+// NewLocation creates a Location for the given key and path. The ConfigFile
+// is set to ~/.gitconfigs/<key>.gitconfig automatically.
+func NewLocation(key string, location string) *Location {
+	return &Location{
+		Key:        key,
+		Path:       location,
+		ConfigFile: filepath.Join(home.GetConfigsDir(), fmt.Sprintf("%s.gitconfig", key)),
+	}
+}
+
+// Returns the section composed from the location object
+// this section is the text that usually goes into the gitconfig file
+func (l Location) ToSection() (string, error) {
+	var section bytes.Buffer
+	sectionTemplate := template.New("SectionTemplate")
+
+	sectionTemplate, err := sectionTemplate.Parse(locationSectionTemplate)
+	if err != nil {
+		// error creating template
+		return "", err
+	}
+
+	err = sectionTemplate.Execute(&section, l)
+	if err != nil {
+		// error parsing template with data
+		return "", err
+	}
+
+	// returns section
+	return section.String(), nil
+}
