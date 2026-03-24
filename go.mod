@@ -1,9 +1,8 @@
 module github.com/0ghny/gitconfig
 
-go 1.19
+go 1.24
 
 require (
-	github.com/0ghny/go-libx v0.0.0-20220823085321-6dabaddd333a
 	github.com/jedib0t/go-pretty/v6 v6.3.7
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/afero v1.9.2
