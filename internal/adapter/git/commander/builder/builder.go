@@ -42,21 +42,25 @@ func (b *CommandBuilder) Build() (exec.Cmd, error) {
 	// environment automatically — no explicit copy needed.
 	return *theCmd, nil
 }
+
 // WithArguments sets the positional arguments for the command.
 func (b *CommandBuilder) WithArguments(a ...string) *CommandBuilder {
 	b.args = a
 	return b
 }
+
 // WithEnvironmentVariable appends a single KEY=VALUE pair to the command's environment.
 func (b *CommandBuilder) WithEnvironmentVariable(key string, value string) *CommandBuilder {
 	b.env = append(b.env, fmt.Sprintf("%s=%s", key, value))
 	return b
 }
+
 // WithEnvironmentVariables appends multiple KEY=VALUE pairs to the command's environment.
 func (b *CommandBuilder) WithEnvironmentVariables(envs []string) *CommandBuilder {
 	b.env = append(b.env, envs...)
 	return b
 }
+
 // IncludeOSEnvironment copies the current process's environment into the
 // command's environment, so it merges with any additional variables added via
 // WithEnvironmentVariable.
@@ -64,6 +68,7 @@ func (b *CommandBuilder) IncludeOSEnvironment() *CommandBuilder {
 	b.env = append(b.env, os.Environ()...)
 	return b
 }
+
 // WithTimeout sets a deadline on the command's context. The command is
 // cancelled if it has not finished within the given duration.
 func (b *CommandBuilder) WithTimeout(t time.Duration) *CommandBuilder {

@@ -16,13 +16,13 @@ const (
 
 func newMockGitConfig(content string) *GitConfig {
 	afs := filesystem.NewMemFs()
-	afs.WriteFile(testPath, []byte(content), fs.ModeAppend)
+	_ = afs.WriteFile(testPath, []byte(content), fs.ModeAppend)
 	return NewGitConfig(testPath, afs)
 }
 
 // NewGitConfig
 
-func TestNewGitConfig_WithEmptyPath_ShouldUseUserDefaultPath(t *testing.T) {
+func TestNewGitConfig_WithEmptyPath_ShouldUseUserDefaultmPath(t *testing.T) {
 	gc := NewGitConfig("", nil)
 	assert.Equal(t, GetUserGitConfigPath(), gc.path)
 }

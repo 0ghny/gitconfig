@@ -75,7 +75,7 @@ var (
 func newMockLocationManager(fileContent string) *LocationManager {
 	gitConfigPath := gitconfig.GetUserGitConfigPath()
 	aFS = filesystem.NewMemFs()
-	aFS.WriteFile(gitConfigPath, []byte(fileContent), fs.ModeAppend)
+	_ = aFS.WriteFile(gitConfigPath, []byte(fileContent), fs.ModeAppend)
 	return NewLocationManager(gitConfigPath, aFS)
 }
 
