@@ -16,3 +16,13 @@
 
 # IDE's
 .vscode
+
+# ASDF
+.tool-versions
+
+# Build
+target/
+bin/
+
+# OSX
+.DS_Store
