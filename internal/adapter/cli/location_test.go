@@ -10,11 +10,11 @@ import (
 func TestLocationCmd_WithExistingKey_PrintsLocationDetails(t *testing.T) {
 	env := newTestEnv(t, testGitConfig)
 
-	out, err := env.run(t, "", "location", "work")
+	out, err := env.run(t, "", "location", "location1")
 
 	require.NoError(t, err)
-	assert.Contains(t, out, "work")
-	assert.Contains(t, out, "~/work")
+	assert.Contains(t, out, "location1")
+	assert.Contains(t, out, "~/location1")
 }
 
 func TestLocationCmd_WithNonExistingKey_ReturnsError(t *testing.T) {

@@ -26,15 +26,15 @@ func TestLocationNewCmd_WithValidArgs_AddsLocationAndPrintsSuccess(t *testing.T)
 
 func TestLocationNewCmd_WithDuplicateKey_UpdatesExistingLocation(t *testing.T) {
 	env := newTestEnv(t, testGitConfig)
-	// Pre-create the work config file so the update rename does not fail.
-	env.preCreateConfigFile(t, "~/.gitconfigs/work.gitconfig")
+	// Pre-create the location2 config file so the update rename does not fail.
+	env.preCreateConfigFile(t, "~/.gitconfigs/location2.gitconfig")
 
-	_, err := env.run(t, "", "location", "new", "work", "--location", "/code/work-updated")
+	_, err := env.run(t, "", "location", "new", "location2", "--location", "/code/location2-updated")
 
 	require.NoError(t, err)
 	svc := env.factory(testGitConfigPath)
-	l, readErr := svc.FindLocationByKey("work")
+	l, readErr := svc.FindLocationByKey("location2")
 	require.NoError(t, readErr)
 	require.NotNil(t, l)
-	assert.Equal(t, "/code/work-updated", l.Path)
+	assert.Equal(t, "/code/location2-updated", l.Path)
 }

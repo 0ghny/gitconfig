@@ -18,12 +18,12 @@ import (
 const testGitConfig = `[user]
 	name = test user
 	email = test@localhost
-# gitconfig.location.key work
-[includeIf "gitdir:~/work/"]
-	path = ~/.gitconfigs/work.gitconfig
-# gitconfig.location.key personal
-[includeIf "gitdir:~/personal/"]
-	path = ~/.gitconfigs/personal.gitconfig
+# gitconfig.location.key location2
+[includeIf "gitdir:~/location2/"]
+	path = ~/.gitconfigs/location2.gitconfig
+# gitconfig.location.key location1
+[includeIf "gitdir:~/location1/"]
+	path = ~/.gitconfigs/location1.gitconfig
 `
 
 const testGitConfigPath = "/tmp/test-gitconfig"

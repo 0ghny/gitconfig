@@ -14,8 +14,8 @@ func TestLocationsCmd_WithTwoLocations_PrintsBothKeys(t *testing.T) {
 	out, err := env.run(t, "", "locations")
 
 	require.NoError(t, err)
-	assert.Contains(t, out, "work")
-	assert.Contains(t, out, "personal")
+	assert.Contains(t, out, "location2")
+	assert.Contains(t, out, "location1")
 }
 
 func TestLocationsCmd_WithNoLocations_PrintsEmptyTableWithoutError(t *testing.T) {
@@ -26,7 +26,7 @@ func TestLocationsCmd_WithNoLocations_PrintsEmptyTableWithoutError(t *testing.T)
 	require.NoError(t, err)
 	// Table header must still be present; no location rows.
 	assert.Contains(t, out, "KEY")
-	assert.NotContains(t, out, "work")
+	assert.NotContains(t, out, "location2")
 }
 
 func TestLocationsCmd_WithMissingGitConfigFile_ReturnsError(t *testing.T) {
