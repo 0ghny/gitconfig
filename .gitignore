@@ -22,6 +22,7 @@
 
 # Build
 target/
+bin/
 
 # OSX
 .DS_Store
